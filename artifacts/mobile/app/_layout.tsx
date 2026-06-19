@@ -6,7 +6,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -15,36 +15,55 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AppProvider } from "@/context/AppContext";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient();
 
+function AuthGuard() {
+  const { isAuthenticated, hasPin, loading } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) return;
+
+    const inAuthGroup = segments[0] === "(auth)";
+
+    if (!isAuthenticated && !inAuthGroup) {
+      router.replace(hasPin ? "/(auth)/login" : "/(auth)/setup");
+    } else if (isAuthenticated && inAuthGroup) {
+      router.replace("/(tabs)/");
+    }
+  }, [isAuthenticated, hasPin, loading, segments]);
+
+  return null;
+}
+
 function RootLayoutNav() {
   return (
-    <Stack screenOptions={{ headerBackTitle: "Back" }}>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="staff/[id]"
-        options={{ headerShown: false, presentation: "card" }}
-      />
-      <Stack.Screen
-        name="staff/add"
-        options={{ title: "Add Staff", headerBackTitle: "Back" }}
-      />
-      <Stack.Screen
-        name="dress/index"
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="salary/index"
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="locations/add"
-        options={{ title: "Add Location", headerBackTitle: "Back" }}
-      />
-    </Stack>
+    <>
+      <AuthGuard />
+      <Stack screenOptions={{ headerBackTitle: "Back", animation: "slide_from_right" }}>
+        <Stack.Screen name="(auth)" options={{ headerShown: false, animation: "fade" }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="staff/[id]"
+          options={{ headerShown: false, presentation: "card" }}
+        />
+        <Stack.Screen
+          name="staff/add"
+          options={{ title: "Add Staff", headerBackTitle: "Back" }}
+        />
+        <Stack.Screen name="dress/index" options={{ headerShown: false }} />
+        <Stack.Screen name="salary/index" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="locations/add"
+          options={{ title: "Add Location", headerBackTitle: "Back" }}
+        />
+      </Stack>
+    </>
   );
 }
 
@@ -68,13 +87,15 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
-          <AppProvider>
-            <GestureHandlerRootView>
-              <KeyboardProvider>
-                <RootLayoutNav />
-              </KeyboardProvider>
-            </GestureHandlerRootView>
-          </AppProvider>
+          <AuthProvider>
+            <AppProvider>
+              <GestureHandlerRootView>
+                <KeyboardProvider>
+                  <RootLayoutNav />
+                </KeyboardProvider>
+              </GestureHandlerRootView>
+            </AppProvider>
+          </AuthProvider>
         </QueryClientProvider>
       </ErrorBoundary>
     </SafeAreaProvider>

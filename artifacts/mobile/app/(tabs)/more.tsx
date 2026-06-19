@@ -2,6 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
 import {
+  Alert,
   Platform,
   ScrollView,
   StyleSheet,
@@ -12,6 +13,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useColors } from "@/hooks/useColors";
 import { useApp } from "@/context/AppContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface MenuItem {
   label: string;
@@ -26,6 +28,7 @@ export default function MoreScreen() {
   const colors = useColors();
   const insets = useSafeAreaInsets();
   const { dress, salary } = useApp();
+  const { logout } = useAuth();
 
   const pendingSalary = salary.filter((s) => s.status === "pending").length;
   const damagedDress = dress.filter((d) => d.condition === "Damaged").length;
@@ -56,6 +59,23 @@ export default function MoreScreen() {
     { label: "Salary Pending", value: pendingSalary, icon: "clock" as const, color: "#E65100" },
     { label: "Salary Paid", value: salary.filter((s) => s.status === "paid").length, icon: "check-circle" as const, color: "#2E7D32" },
   ];
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Lock App",
+      "This will lock the app and require your PIN to re-enter.",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Lock Now",
+          style: "destructive",
+          onPress: () => {
+            logout();
+          },
+        },
+      ]
+    );
+  };
 
   return (
     <ScrollView
@@ -113,6 +133,7 @@ export default function MoreScreen() {
         </TouchableOpacity>
       ))}
 
+      {/* Agency Card */}
       <Text style={[styles.sectionTitle, { color: colors.foreground, marginTop: 24 }]}>Agency</Text>
       <View style={[styles.agencyCard, { backgroundColor: colors.primary }]}>
         <View style={styles.agencyHeader}>
@@ -134,6 +155,24 @@ export default function MoreScreen() {
           </View>
         </View>
       </View>
+
+      {/* Lock / Logout */}
+      <TouchableOpacity
+        style={[styles.lockBtn, { backgroundColor: colors.card, borderColor: colors.border }]}
+        onPress={handleLogout}
+        activeOpacity={0.7}
+      >
+        <View style={[styles.lockIcon, { backgroundColor: "#FFEBEE" }]}>
+          <Feather name="lock" size={20} color="#C62828" />
+        </View>
+        <View style={styles.lockText}>
+          <Text style={[styles.lockLabel, { color: "#C62828" }]}>Lock App</Text>
+          <Text style={[styles.lockSub, { color: colors.mutedForeground }]}>
+            Require PIN to re-enter
+          </Text>
+        </View>
+        <Feather name="chevron-right" size={18} color={colors.border} />
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -183,12 +222,39 @@ const styles = StyleSheet.create({
   menuSub: { fontSize: 12, fontFamily: "Inter_400Regular", marginTop: 2 },
   badge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
   badgeText: { fontSize: 10, fontFamily: "Inter_600SemiBold" },
-  agencyCard: { borderRadius: 16, padding: 18 },
+  agencyCard: { borderRadius: 16, padding: 18, marginBottom: 16 },
   agencyHeader: { flexDirection: "row", alignItems: "center", gap: 14 },
   agencyName: { color: "#fff", fontSize: 15, fontFamily: "Inter_700Bold" },
-  agencyTagline: { color: "rgba(255,255,255,0.7)", fontSize: 12, fontFamily: "Inter_400Regular", marginTop: 2 },
+  agencyTagline: {
+    color: "rgba(255,255,255,0.7)",
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
+  },
   agencyDivider: { height: 1, marginVertical: 14 },
   agencyInfo: { flexDirection: "row", gap: 20 },
   agencyInfoItem: { flexDirection: "row", alignItems: "center", gap: 6 },
-  agencyInfoText: { color: "rgba(255,255,255,0.85)", fontSize: 12, fontFamily: "Inter_500Medium" },
+  agencyInfoText: {
+    color: "rgba(255,255,255,0.85)",
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+  },
+  lockBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 14,
+    borderWidth: 1,
+    padding: 14,
+    gap: 12,
+  },
+  lockIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  lockText: { flex: 1 },
+  lockLabel: { fontSize: 15, fontFamily: "Inter_600SemiBold" },
+  lockSub: { fontSize: 12, fontFamily: "Inter_400Regular", marginTop: 2 },
 });
