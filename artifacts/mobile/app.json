@@ -15,10 +15,12 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.secureforce.india"
+      "bundleIdentifier": "com.secureforce.india",
+      "buildNumber": "1"
     },
     "android": {
-      "package": "com.secureforce.india"
+      "package": "com.secureforce.india",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/images/icon.png"

@@ -1,0 +1,27 @@
+{
+  "build": {
+    "production": {
+      "android": {
+        "workflow": "managed",
+        "buildType": "app-bundle"
+      },
+      "ios": {
+        "workflow": "managed",
+        "buildType": "release"
+      }
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "workflow": "managed"
+      },
+      "ios": {
+        "workflow": "managed"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
