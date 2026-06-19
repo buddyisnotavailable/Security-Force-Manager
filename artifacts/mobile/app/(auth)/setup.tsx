@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
@@ -86,7 +86,7 @@ export default function SetupPinScreen() {
     <View style={[styles.container, { paddingTop: topPad, paddingBottom: botPad + 16 }]}>
       <View style={styles.top}>
         <View style={styles.shieldWrap}>
-          <Feather name="shield" size={44} color="#FFB300" />
+          <AppIcon name="shield" size={44} color="#FFB300" />
         </View>
         <Text style={styles.appName}>SecureForce India</Text>
         <Text style={styles.setupTag}>Setup Manager PIN</Text>
@@ -142,7 +142,7 @@ export default function SetupPinScreen() {
             disabled={pin.length === 0}
             activeOpacity={0.6}
           >
-            <Feather
+            <AppIcon
               name="delete"
               size={22}
               color={pin.length > 0 ? "#fff" : "rgba(255,255,255,0.3)"}
@@ -152,7 +152,7 @@ export default function SetupPinScreen() {
       </View>
 
       <View style={styles.bottom}>
-        <Feather name="lock" size={14} color="rgba(255,255,255,0.4)" />
+        <AppIcon name="lock" size={14} color="rgba(255,255,255,0.4)" />
         <Text style={styles.securityNote}>PIN is stored securely on this device</Text>
       </View>
     </View>

@@ -1,6 +1,6 @@
 import { BlurView } from "expo-blur";
-import { Feather } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { AppIcon } from "@/components/AppIcon";
 import React from "react";
 import { Platform, StyleSheet, View, useColorScheme } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -57,7 +57,7 @@ export default function TabLayout() {
         options={{
           title: "Dashboard",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="home" size={size ?? 22} color={color} />
+            <AppIcon name="home" size={size ?? 22} color={color} />
           ),
         }}
       />
@@ -66,7 +66,7 @@ export default function TabLayout() {
         options={{
           title: "Attendance",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="clock" size={size ?? 22} color={color} />
+            <AppIcon name="clock" size={size ?? 22} color={color} />
           ),
         }}
       />
@@ -75,7 +75,7 @@ export default function TabLayout() {
         options={{
           title: "Staff",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="users" size={size ?? 22} color={color} />
+            <AppIcon name="users" size={size ?? 22} color={color} />
           ),
         }}
       />
@@ -84,7 +84,7 @@ export default function TabLayout() {
         options={{
           title: "Sites",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="map-pin" size={size ?? 22} color={color} />
+            <AppIcon name="map-pin" size={size ?? 22} color={color} />
           ),
         }}
       />
@@ -93,7 +93,7 @@ export default function TabLayout() {
         options={{
           title: "More",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="grid" size={size ?? 22} color={color} />
+            <AppIcon name="grid" size={size ?? 22} color={color} />
           ),
         }}
       />

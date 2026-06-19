@@ -1,7 +1,7 @@
-import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useColors } from "@/hooks/useColors";
+import { AppIcon } from "@/components/AppIcon";
 import type { Staff } from "@/constants/types";
 
 interface StaffCardProps {
@@ -59,14 +59,14 @@ export function StaffCard({ staff, locationName, onPress }: StaffCardProps) {
         </Text>
         {locationName ? (
           <View style={styles.locRow}>
-            <Feather name="map-pin" size={11} color={colors.mutedForeground} />
+            <AppIcon name="map-pin" size={11} color={colors.mutedForeground} />
             <Text style={[styles.location, { color: colors.mutedForeground }]} numberOfLines={1}>
               {" "}{locationName}
             </Text>
           </View>
         ) : null}
       </View>
-      <Feather name="chevron-right" size={18} color={colors.border} />
+      <AppIcon name="chevron-right" size={18} color={colors.border} />
     </TouchableOpacity>
   );
 }

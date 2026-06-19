@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon, type AppIconName } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
@@ -94,7 +94,7 @@ export default function StaffDetailScreen() {
       {/* Hero */}
       <View style={[styles.hero, { backgroundColor: themeColors.primary }]}>
         <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
-          <Feather name="arrow-left" size={22} color="#fff" />
+          <AppIcon name="arrow-left" size={22} color="#fff" />
         </TouchableOpacity>
         <View style={styles.avatarWrap}>
           <Text style={styles.avatarText}>{initials}</Text>
@@ -172,7 +172,7 @@ export default function StaffDetailScreen() {
             <View style={[styles.card, { backgroundColor: themeColors.card, borderColor: themeColors.border }]}>
               {staffDress.map((d) => (
                 <View key={d.id} style={styles.attRow}>
-                  <Feather name="package" size={14} color={themeColors.primary} />
+                  <AppIcon name="package" size={14} color={themeColors.primary} />
                   <Text style={[styles.attDate, { color: themeColors.foreground }]}>{d.itemType}</Text>
                   <Text style={[styles.attStatus, { color: themeColors.mutedForeground }]}>
                     Size {d.size} · {d.condition}
@@ -190,7 +190,7 @@ export default function StaffDetailScreen() {
             <View style={[styles.card, { backgroundColor: themeColors.card, borderColor: themeColors.border }]}>
               {staffSalary.map((s) => (
                 <View key={s.id} style={styles.attRow}>
-                  <Feather
+                  <AppIcon
                     name={s.status === "paid" ? "check-circle" : "clock"}
                     size={14}
                     color={s.status === "paid" ? "#2E7D32" : "#E65100"}
@@ -214,7 +214,7 @@ export default function StaffDetailScreen() {
             ]}
             onPress={toggleStatus}
           >
-            <Feather
+            <AppIcon
               name={staff.status === "active" ? "user-x" : "user-check"}
               size={16}
               color={staff.status === "active" ? "#E65100" : "#2E7D32"}
@@ -232,7 +232,7 @@ export default function StaffDetailScreen() {
             style={[styles.actionBtn, { backgroundColor: "#FFEBEE" }]}
             onPress={handleDelete}
           >
-            <Feather name="trash-2" size={16} color="#C62828" />
+            <AppIcon name="trash-2" size={16} color="#C62828" />
             <Text style={[styles.actionText, { color: "#C62828" }]}>Remove</Text>
           </TouchableOpacity>
         </View>
@@ -247,14 +247,14 @@ function InfoRow({
   value,
   colors: c,
 }: {
-  icon: keyof typeof Feather.glyphMap;
+  icon: AppIconName;
   label: string;
   value: string;
   colors: ReturnType<typeof useColors>;
 }) {
   return (
     <View style={styles.infoRow}>
-      <Feather name={icon} size={15} color={c.primary} />
+      <AppIcon name={icon} size={15} color={c.primary} />
       <Text style={[styles.infoLabel, { color: c.mutedForeground }]}>{label}</Text>
       <Text style={[styles.infoValue, { color: c.foreground }]} numberOfLines={1}>
         {value}

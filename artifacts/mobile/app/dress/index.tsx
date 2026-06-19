@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -85,14 +85,14 @@ export default function DressScreen() {
       >
         <View style={styles.headerRow}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-            <Feather name="arrow-left" size={22} color={colors.foreground} />
+            <AppIcon name="arrow-left" size={22} color={colors.foreground} />
           </TouchableOpacity>
           <Text style={[styles.title, { color: colors.foreground }]}>Dress Management</Text>
           <TouchableOpacity
             style={[styles.addBtn, { backgroundColor: colors.primary }]}
             onPress={() => setShowAdd(true)}
           >
-            <Feather name="plus" size={20} color="#fff" />
+            <AppIcon name="plus" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
         <SearchBar value={search} onChangeText={setSearch} placeholder="Search staff or item..." />
@@ -189,7 +189,7 @@ export default function DressScreen() {
             activeOpacity={0.7}
           >
             <View style={[styles.rowIcon, { backgroundColor: "#6A1B9A15" }]}>
-              <Feather name="package" size={18} color="#6A1B9A" />
+              <AppIcon name="package" size={18} color="#6A1B9A" />
             </View>
             <View style={styles.rowInfo}>
               <Text style={[styles.rowName, { color: colors.foreground }]}>

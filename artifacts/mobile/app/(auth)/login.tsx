@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
@@ -111,7 +111,7 @@ export default function LoginScreen() {
       {/* Logo area */}
       <View style={styles.top}>
         <View style={styles.shieldWrap}>
-          <Feather name="shield" size={44} color="#FFB300" />
+          <AppIcon name="shield" size={44} color="#FFB300" />
         </View>
         <Text style={styles.appName}>SecureForce India</Text>
         <Text style={styles.subtitle}>Manager Access</Text>
@@ -163,7 +163,7 @@ export default function LoginScreen() {
             disabled={locked || pin.length === 0}
             activeOpacity={0.6}
           >
-            <Feather name="delete" size={22} color={pin.length > 0 ? "#fff" : "rgba(255,255,255,0.3)"} />
+            <AppIcon name="delete" size={22} color={pin.length > 0 ? "#fff" : "rgba(255,255,255,0.3)"} />
           </TouchableOpacity>
         </View>
       </View>

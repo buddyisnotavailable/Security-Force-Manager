@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useMemo, useState } from "react";
@@ -94,7 +94,7 @@ export default function SalaryScreen() {
       >
         <View style={styles.headerRow}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-            <Feather name="arrow-left" size={22} color={colors.foreground} />
+            <AppIcon name="arrow-left" size={22} color={colors.foreground} />
           </TouchableOpacity>
           <View style={{ flex: 1 }}>
             <Text style={[styles.title, { color: colors.foreground }]}>Salary</Text>
@@ -104,7 +104,7 @@ export default function SalaryScreen() {
             style={[styles.genBtn, { backgroundColor: colors.primary + "18" }]}
             onPress={handleGenerateAll}
           >
-            <Feather name="refresh-cw" size={16} color={colors.primary} />
+            <AppIcon name="refresh-cw" size={16} color={colors.primary} />
             <Text style={[styles.genText, { color: colors.primary }]}>Generate</Text>
           </TouchableOpacity>
         </View>
@@ -178,12 +178,12 @@ export default function SalaryScreen() {
                 style={[styles.payBtn, { backgroundColor: "#2E7D32" }]}
                 onPress={() => handleMarkPaid(item)}
               >
-                <Feather name="check" size={14} color="#fff" />
+                <AppIcon name="check" size={14} color="#fff" />
                 <Text style={styles.payBtnText}>Pay</Text>
               </TouchableOpacity>
             ) : (
               <View style={[styles.paidBadge, { backgroundColor: "#E8F5E9" }]}>
-                <Feather name="check-circle" size={13} color="#2E7D32" />
+                <AppIcon name="check-circle" size={13} color="#2E7D32" />
                 <Text style={[styles.paidText, { color: "#2E7D32" }]}>Paid</Text>
               </View>
             )}

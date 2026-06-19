@@ -1,5 +1,5 @@
-import { Feather } from "@expo/vector-icons";
 import React, { useMemo } from "react";
+import { AppIcon } from "@/components/AppIcon";
 import {
   Platform,
   ScrollView,
@@ -63,7 +63,7 @@ export default function DashboardScreen() {
           <Text style={[styles.date, { color: colors.mutedForeground }]}>{dateStr}</Text>
         </View>
         <View style={[styles.shieldBadge, { backgroundColor: colors.primary }]}>
-          <Feather name="shield" size={22} color="#fff" />
+          <AppIcon name="shield" size={22} color="#fff" />
         </View>
       </View>
 
@@ -78,15 +78,15 @@ export default function DashboardScreen() {
         </View>
         <View style={styles.bannerRight}>
           <View style={styles.bannerMini}>
-            <Feather name="check-circle" size={14} color="#A5D6A7" />
+            <AppIcon name="check-circle" size={14} color="#A5D6A7" />
             <Text style={styles.bannerMiniText}>{stats.presentToday} Present</Text>
           </View>
           <View style={styles.bannerMini}>
-            <Feather name="x-circle" size={14} color="#EF9A9A" />
+            <AppIcon name="x-circle" size={14} color="#EF9A9A" />
             <Text style={styles.bannerMiniText}>{stats.absentToday} Absent</Text>
           </View>
           <View style={styles.bannerMini}>
-            <Feather name="clock" size={14} color="#FFE082" />
+            <AppIcon name="clock" size={14} color="#FFE082" />
             <Text style={styles.bannerMiniText}>{stats.onLeave} On Leave</Text>
           </View>
         </View>
@@ -133,7 +133,7 @@ export default function DashboardScreen() {
       </Text>
       {todayAttendance.length === 0 ? (
         <View style={[styles.emptyBox, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <Feather name="clock" size={24} color={colors.mutedForeground} />
+          <AppIcon name="clock" size={24} color={colors.mutedForeground} />
           <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
             No attendance recorded today
           </Text>

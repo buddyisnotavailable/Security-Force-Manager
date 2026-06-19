@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon, type AppIconName } from "@/components/AppIcon";
 import { router } from "expo-router";
 import React from "react";
 import {
@@ -18,7 +18,7 @@ import { useAuth } from "@/context/AuthContext";
 interface MenuItem {
   label: string;
   subtitle: string;
-  icon: keyof typeof Feather.glyphMap;
+  icon: AppIconName;
   color: string;
   route: string;
   badge?: string;
@@ -100,7 +100,7 @@ export default function MoreScreen() {
             style={[styles.statBox, { backgroundColor: colors.card, borderColor: colors.border }]}
           >
             <View style={[styles.statIcon, { backgroundColor: s.color + "15" }]}>
-              <Feather name={s.icon} size={16} color={s.color} />
+              <AppIcon name={s.icon} size={16} color={s.color} />
             </View>
             <Text style={[styles.statValue, { color: colors.foreground }]}>{s.value}</Text>
             <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>{s.label}</Text>
@@ -118,7 +118,7 @@ export default function MoreScreen() {
           activeOpacity={0.7}
         >
           <View style={[styles.menuIcon, { backgroundColor: item.color + "15" }]}>
-            <Feather name={item.icon} size={22} color={item.color} />
+            <AppIcon name={item.icon} size={22} color={item.color} />
           </View>
           <View style={styles.menuText}>
             <Text style={[styles.menuLabel, { color: colors.foreground }]}>{item.label}</Text>
@@ -129,7 +129,7 @@ export default function MoreScreen() {
               <Text style={[styles.badgeText, { color: colors.accent }]}>{item.badge}</Text>
             </View>
           ) : null}
-          <Feather name="chevron-right" size={18} color={colors.border} />
+          <AppIcon name="chevron-right" size={18} color={colors.border} />
         </TouchableOpacity>
       ))}
 
@@ -137,7 +137,7 @@ export default function MoreScreen() {
       <Text style={[styles.sectionTitle, { color: colors.foreground, marginTop: 24 }]}>Agency</Text>
       <View style={[styles.agencyCard, { backgroundColor: colors.primary }]}>
         <View style={styles.agencyHeader}>
-          <Feather name="shield" size={28} color="#fff" />
+          <AppIcon name="shield" size={28} color="#fff" />
           <View>
             <Text style={styles.agencyName}>SecureForce India Pvt. Ltd.</Text>
             <Text style={styles.agencyTagline}>Protecting what matters most</Text>
@@ -146,11 +146,11 @@ export default function MoreScreen() {
         <View style={[styles.agencyDivider, { backgroundColor: "rgba(255,255,255,0.2)" }]} />
         <View style={styles.agencyInfo}>
           <View style={styles.agencyInfoItem}>
-            <Feather name="award" size={14} color="rgba(255,255,255,0.7)" />
+            <AppIcon name="award" size={14} color="rgba(255,255,255,0.7)" />
             <Text style={styles.agencyInfoText}>PSARA Licensed</Text>
           </View>
           <View style={styles.agencyInfoItem}>
-            <Feather name="map-pin" size={14} color="rgba(255,255,255,0.7)" />
+            <AppIcon name="map-pin" size={14} color="rgba(255,255,255,0.7)" />
             <Text style={styles.agencyInfoText}>Pan India Operations</Text>
           </View>
         </View>
@@ -163,7 +163,7 @@ export default function MoreScreen() {
         activeOpacity={0.7}
       >
         <View style={[styles.lockIcon, { backgroundColor: "#FFEBEE" }]}>
-          <Feather name="lock" size={20} color="#C62828" />
+          <AppIcon name="lock" size={20} color="#C62828" />
         </View>
         <View style={styles.lockText}>
           <Text style={[styles.lockLabel, { color: "#C62828" }]}>Lock App</Text>
@@ -171,7 +171,7 @@ export default function MoreScreen() {
             Require PIN to re-enter
           </Text>
         </View>
-        <Feather name="chevron-right" size={18} color={colors.border} />
+        <AppIcon name="chevron-right" size={18} color={colors.border} />
       </TouchableOpacity>
     </ScrollView>
   );

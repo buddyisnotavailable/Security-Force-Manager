@@ -1,7 +1,7 @@
-import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { useColors } from "@/hooks/useColors";
+import { AppIcon } from "@/components/AppIcon";
 
 interface SearchBarProps {
   value: string;
@@ -13,7 +13,7 @@ export function SearchBar({ value, onChangeText, placeholder = "Search..." }: Se
   const colors = useColors();
   return (
     <View style={[styles.wrap, { backgroundColor: colors.card, borderColor: colors.border }]}>
-      <Feather name="search" size={16} color={colors.mutedForeground} />
+      <AppIcon name="search" size={16} color={colors.mutedForeground} />
       <TextInput
         style={[styles.input, { color: colors.foreground }]}
         value={value}

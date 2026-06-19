@@ -1,3 +1,4 @@
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useState } from "react";

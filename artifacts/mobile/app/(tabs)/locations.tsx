@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -57,7 +57,7 @@ export default function LocationsScreen() {
             style={[styles.addBtn, { backgroundColor: colors.primary }]}
             onPress={() => router.push("/locations/add")}
           >
-            <Feather name="plus" size={20} color="#fff" />
+            <AppIcon name="plus" size={20} color="#fff" />
           </TouchableOpacity>
         </View>
         <SearchBar value={search} onChangeText={setSearch} placeholder="Search location..." />
@@ -85,7 +85,7 @@ export default function LocationsScreen() {
             >
               <View style={styles.cardTop}>
                 <View style={[styles.iconWrap, { backgroundColor: colors.primary + "15" }]}>
-                  <Feather name="map-pin" size={20} color={colors.primary} />
+                  <AppIcon name="map-pin" size={20} color={colors.primary} />
                 </View>
                 <View style={styles.cardInfo}>
                   <Text style={[styles.locName, { color: colors.foreground }]} numberOfLines={1}>
@@ -107,19 +107,19 @@ export default function LocationsScreen() {
 
               <View style={styles.cardBottom}>
                 <View style={styles.metaItem}>
-                  <Feather name="users" size={13} color={colors.mutedForeground} />
+                  <AppIcon name="users" size={13} color={colors.mutedForeground} />
                   <Text style={[styles.metaText, { color: colors.mutedForeground }]}>
                     {count} staff deployed
                   </Text>
                 </View>
                 <View style={styles.metaItem}>
-                  <Feather name="radio" size={13} color={colors.mutedForeground} />
+                  <AppIcon name="radio" size={13} color={colors.mutedForeground} />
                   <Text style={[styles.metaText, { color: colors.mutedForeground }]}>
                     {item.radius}m geo-fence
                   </Text>
                 </View>
                 <View style={styles.metaItem}>
-                  <Feather name="phone" size={13} color={colors.mutedForeground} />
+                  <AppIcon name="phone" size={13} color={colors.mutedForeground} />
                   <Text style={[styles.metaText, { color: colors.mutedForeground }]}>
                     {item.contactPerson}
                   </Text>

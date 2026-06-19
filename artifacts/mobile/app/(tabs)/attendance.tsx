@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import * as Location from "expo-location";
 import React, { useState } from "react";
@@ -181,7 +181,7 @@ export default function AttendanceScreen() {
                   <View style={styles.timeRow}>
                     {record.checkIn ? (
                       <View style={styles.timeChip}>
-                        <Feather name="log-in" size={10} color={colors.success} />
+                        <AppIcon name="log-in" size={10} color={colors.success} />
                         <Text style={[styles.timeText, { color: colors.success }]}>
                           {formatTime(record.checkIn)}
                         </Text>
@@ -189,14 +189,14 @@ export default function AttendanceScreen() {
                     ) : null}
                     {record.checkOut ? (
                       <View style={styles.timeChip}>
-                        <Feather name="log-out" size={10} color={colors.mutedForeground} />
+                        <AppIcon name="log-out" size={10} color={colors.mutedForeground} />
                         <Text style={[styles.timeText, { color: colors.mutedForeground }]}>
                           {formatTime(record.checkOut)}
                         </Text>
                       </View>
                     ) : null}
                     {record.verifiedByLocation && (
-                      <Feather name="map-pin" size={11} color={colors.primary} />
+                      <AppIcon name="map-pin" size={11} color={colors.primary} />
                     )}
                   </View>
                 )}
@@ -210,13 +210,13 @@ export default function AttendanceScreen() {
                       style={[styles.btn, { backgroundColor: colors.primary }]}
                       onPress={() => handleCheckIn(item)}
                     >
-                      <Feather name="log-in" size={14} color="#fff" />
+                      <AppIcon name="log-in" size={14} color="#fff" />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={[styles.btn, { backgroundColor: colors.destructive + "18" }]}
                       onPress={() => handleMarkAbsent(item)}
                     >
-                      <Feather name="x" size={14} color={colors.destructive} />
+                      <AppIcon name="x" size={14} color={colors.destructive} />
                     </TouchableOpacity>
                   </>
                 ) : !record.checkOut && record.status !== "absent" ? (
@@ -224,7 +224,7 @@ export default function AttendanceScreen() {
                     style={[styles.btnWide, { backgroundColor: "#FFF3E0" }]}
                     onPress={() => handleCheckIn(item)}
                   >
-                    <Feather name="log-out" size={14} color={colors.warning} />
+                    <AppIcon name="log-out" size={14} color={colors.warning} />
                     <Text style={[styles.btnText, { color: colors.warning }]}>Out</Text>
                   </TouchableOpacity>
                 ) : (

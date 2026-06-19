@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import { router } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
@@ -68,7 +68,7 @@ export default function StaffScreen() {
             style={[styles.addBtn, { backgroundColor: colors.primary }]}
             onPress={() => router.push("/staff/add")}
           >
-            <Feather name="user-plus" size={18} color="#fff" />
+            <AppIcon name="user-plus" size={18} color="#fff" />
           </TouchableOpacity>
         </View>
         <SearchBar value={search} onChangeText={setSearch} placeholder="Search name, ID, role..." />
