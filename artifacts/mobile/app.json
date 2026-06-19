@@ -25,6 +25,14 @@
     "web": {
       "favicon": "./assets/images/icon.png"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "plugins": [
       [
         "expo-router",
