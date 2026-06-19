@@ -68,7 +68,7 @@ export default function LocationsScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={[
           styles.list,
-          { paddingBottom: Platform.OS === "web" ? 34 : insets.bottom + 24 },
+          { paddingBottom: 24 },
         ]}
         ListEmptyComponent={
           <EmptyState

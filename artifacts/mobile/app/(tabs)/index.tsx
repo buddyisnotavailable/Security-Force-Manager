@@ -46,7 +46,7 @@ export default function DashboardScreen() {
         styles.content,
         {
           paddingTop: topPad + 16,
-          paddingBottom: Platform.OS === "web" ? 34 : insets.bottom + 24,
+          paddingBottom: 24,
         },
       ]}
       showsVerticalScrollIndicator={false}

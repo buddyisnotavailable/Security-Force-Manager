@@ -154,7 +154,7 @@ export default function AttendanceScreen() {
         contentContainerStyle={[
           styles.list,
           {
-            paddingBottom: Platform.OS === "web" ? 34 : insets.bottom + 24,
+            paddingBottom: 24,
           },
         ]}
         ListEmptyComponent={<EmptyState icon="users" title="No staff found" />}
